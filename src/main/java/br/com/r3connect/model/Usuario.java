@@ -8,8 +8,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "tb_usuario")
@@ -23,9 +27,9 @@ public class Usuario {
 	@Size(min = 5, max = 500)
 	private String nome;
 	
-	@NotNull(message = "O e-mail é obrigatório!")
+	@NotBlank(message = "O e-mail é obrigatório!")
 	@Email
-	private Email usuario;
+	private String usuario;
 	
 	@NotNull(message = "A senha é obrigatória!")
 	@Size(min = 8)
@@ -37,6 +41,8 @@ public class Usuario {
 	@Size(min = 9, max = 9)
 	private String cep;
 	
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
+	@Positive(message="Digite um valor maior do que zero")
 	private BigDecimal contribuicao;
 
 	
@@ -58,11 +64,11 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public Email getUsuario() {
+	public String getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Email usuario) {
+	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
 

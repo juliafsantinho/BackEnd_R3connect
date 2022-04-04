@@ -20,7 +20,7 @@ import br.com.r3connect.repository.CategoriaRepository;
 import br.com.r3connect.repository.ProdutoRepository;
 
 @RestController
-@RequestMapping("/Produtos")
+@RequestMapping("/produtos")
 @CrossOrigin(origins="*",allowedHeaders="*")
 public class ProdutoController {
 	
@@ -80,7 +80,7 @@ public class ProdutoController {
     public ResponseEntity<Object> deleteProduto (@Valid @PathVariable Long id) {
     	return produtoRepository.findById(id)
 	    	.map(resposta -> {
-	    		produtoRepository.findById(id);
+	    		produtoRepository.deleteById(id);
 	    		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	    	})
 	    	.orElse(ResponseEntity.notFound().build());
