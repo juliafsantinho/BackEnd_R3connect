@@ -46,8 +46,6 @@ public class Usuario {
 	private BigDecimal contribuicao;
 
 	
-	
-	
 	public Long getId() {
 		return Id;
 	}
