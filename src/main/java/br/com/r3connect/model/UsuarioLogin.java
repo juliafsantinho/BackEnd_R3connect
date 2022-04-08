@@ -1,5 +1,7 @@
 package br.com.r3connect.model;
 
+import java.math.BigDecimal;
+
 public class UsuarioLogin {
 
 	private Long Id;
@@ -14,6 +16,8 @@ public class UsuarioLogin {
 
 	private String cep;
 	
+	private BigDecimal contribuicao;
+
 	private String token;
 
 	public Long getId() {
@@ -62,6 +66,14 @@ public class UsuarioLogin {
 
 	public void setCep(String cep) {
 		this.cep = cep;
+	}
+	
+	public BigDecimal getContribuicao() {
+		return contribuicao;
+	}
+
+	public void setContribuicao(BigDecimal contribuicao) {
+		this.contribuicao = contribuicao;
 	}
 
 	public String getToken() {
